@@ -1,0 +1,41 @@
+<div class="account-pages"></div>
+<div class="clearfix"></div>
+<div class="wrapper-page">
+    <div class=" card-box" *ngIf="!isReset">
+        <div class="panel-heading">
+            <h3 class="text-center"> Password Reset </h3>
+        </div>
+
+        <div class="panel-body">
+            <form method="post" action="#" role="form" novalidate=""
+                class="text-center"
+                [ngFormModel]="resetForm"
+                (submit)="triggerResetPassword($event,resetForm)">
+
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        ×
+                    </button>
+                    Enter your <b>Email</b> and instructions will be sent to you!
+                </div>
+                <div class="form-group m-b-0">
+                    <div class="input-group">
+
+                        <input ngControl="email" #email="ngForm" type="email" class="form-control" (change)="isSubmitted = false" placeholder="Enter Email" [ngClass]="{'error': isSubmitted && resetForm.controls.email.errors}">
+                        <span class="error-text" *ngIf="isSubmitted && email.errors && email.errors.required">This field is required!</span>
+                        <span class="error-text" *ngIf="isSubmitted && resetForm.controls.email.errors && resetForm.controls.email.errors.incorrectMailFormat">Email is not correct!</span>
+                        <span class="input-group-btn">
+									<button type="submit" class="btn btn-pink w-sm waves-effect waves-light">
+										Reset
+									</button>
+								</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="text-center" *ngIf="isReset">
+        <h3>Password Reset Successfully!</h3>
+        <span class="conf text-center" [routerLink]="['/passconf']">Password Confirmation</span>
+    </div>
+</div>

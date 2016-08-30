@@ -1,0 +1,60 @@
+<div class="panel-body" *ngIf="!isConfirm">
+    <form method="post" action="#" role="form" novalidate=""
+        class="text-center"
+        [ngFormModel]="confirmForm"
+        (submit)="triggerConfirmPassword($event,confirmForm)">
+                <div NgControlGroup="matchingPassword" class="confirm1">
+<div class="form-group">
+<input [class.error]="submitted && confirmForm.controls.matchingPassword.controls.password.errors"
+       type="password"
+       [ngFormControl]="confirmForm.controls.matchingPassword.controls.password"
+       class="form-control"
+       name="password" id="password"
+       placeholder="Enter New Password" />
+
+       <span class="error-pass"
+       *ngIf="submitted
+       && confirmForm.controls.matchingPassword.controls.password.errors
+       && confirmForm.controls.matchingPassword.controls.password.errors.incorrectPasswordFormat"
+       >Incorrect Format!</span>
+
+       <span class="error-text"
+       *ngIf="submitted
+       && confirmForm.controls.matchingPassword.controls.password.errors
+       && confirmForm.controls.matchingPassword.controls.password.errors.required">This field is required!</span>
+</div>
+<div class="form-group">
+<input [class.error]="submitted && confirmForm.controls.matchingPassword.controls.repeatPassword.errors"
+       type="password"
+       [ngFormControl]="confirmForm.controls.matchingPassword.controls.repeatPassword"
+       class="form-control"
+       name="rpassword" id="rpassword"
+       placeholder="Confirm New Password" />
+
+   <span class="error-pass"
+   *ngIf="submitted
+   && confirmForm.controls.matchingPassword.controls.password.errors
+   && confirmForm.controls.matchingPassword.controls.password.errors.incorrectPasswordFormat"
+   >Enter correct password!</span>
+
+    <span class="error-text"
+    *ngIf="submitted
+    && confirmForm.controls.matchingPassword.controls.password.errors
+    && confirmForm.controls.matchingPassword.controls.password.errors.required">This field is required!</span>
+</div>
+
+<div id="repeatPass-invalid" *ngIf="submitted && confirmForm.controls.matchingPassword.controls.repeatPassword.errors" class="bg-danger text-danger error" role="alert">
+<span *ngIf="confirmForm.controls.matchingPassword.controls.repeatPassword.errors !== null" class="equiv">
+    Both passwords should be equivalent</span>
+</div>
+</div>
+<span class="input-group-btn">
+            <button type="submit" class="btn btn-pink w-sm waves-effect waves-light">
+                Submit
+            </button>
+        </span>
+</form>
+</div>
+<div class="text-center" *ngIf="isConfirm">
+    <span class="conft text-center" [routerLink]="['/index']">Confirmation is successful!<br>Try Again To Login!</span>
+</div>

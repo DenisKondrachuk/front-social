@@ -1,0 +1,58 @@
+<!-- item body -->
+<div class="col-md-12 item-body" *ngFor="let item of itemList;" [routerLink]="['/cardpage']" label="Click">
+  <div class="body-icon">
+      {{item}}
+    <img src="/static/public/images/avatar-1.jpg" alt="" class="avatar-icon">
+  </div>
+
+
+  <!-- Body Description -->
+  <div class="body-description col-md-12">
+    <div class="col-md-2 body-desc " *ngFor="let item of itemTitle;">
+      <span class="title-body">
+        {{item}}
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Pagination  -->
+<div class="pagination-box">
+  <ul class="pagination pagination-split">
+    <li class="disabled">
+      <a href="#"><i class="fa fa-angle-left"></i></a>
+    </li>
+    <li class="active">
+      <a href="#">1</a>
+    </li>
+    <li>
+      <a href="#">2</a>
+    </li>
+    <li>
+      <a href="#">3</a>
+    </li>
+    <li>
+      <a href="#">4</a>
+    </li>
+    <li>
+      <a href="#">5</a>
+    </li>
+    <li>
+      <a href="#">6</a>
+    </li>
+    <li>
+      <a href="#">7</a>
+    </li>
+    <li>
+      <a href="#"><i class="fa fa-angle-right"></i></a>
+    </li>
+  </ul>
+
+  <!--<ul class="pagination"  *ngFor="#pagin of paginationList;">-->
+    <!--<li class="pagination-item waves-effect">{{pagin}}</li>-->
+  <!--</ul>-->
+  <!--&lt;!&ndash; /.pagination &ndash;&gt;-->
+</div>
+<!-- /.pagination-box -->
+<!-- /.col-md-12 -->
